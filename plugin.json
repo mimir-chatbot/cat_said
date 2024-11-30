@@ -1,4 +1,10 @@
 {
-  "name": "Cat Said",
-  "description": "Inject conversation in the cat like he sent messages before starting the conversation"
+  "name": "cat_said",
+  "version": "0.0.1",
+  "description": "Inject conversation in the cat like he sent messages before starting the conversation.",
+  "author_name": "Me",
+  "author_url": "https://mywebsite.me",
+  "plugin_url": "https://github.com/mimir-chatbot/cat_said",
+  "tags": "cat, template, example",
+  "thumb": "https://raw.githubusercontent.com/my_repo_path/cat-translator.png"
 }
