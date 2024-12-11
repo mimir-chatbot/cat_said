@@ -26,16 +26,14 @@ def before_cat_reads_message(user_message_json, cat):
 @hook  # default priority = 1
 def after_cat_recalls_memories(cat):
 
-    if 'cat_said_metadata' not in cat.working_memory:
-        pass
+    if 'cat_said_metadata' in cat.working_memory:
 
-    recall_query_embedding = cat.cheshire_cat.embedder.embed_query(cat.working_memory.recall_query)
-    vector_memory: VectorMemoryCollection = cat.memory.vectors.collections['declarative']
+        recall_query_embedding = cat.cheshire_cat.embedder.embed_query(cat.working_memory.recall_query)
+        vector_memory: VectorMemoryCollection = cat.memory.vectors.collections['declarative']
 
-    memories = vector_memory.recall_memories_from_embedding(
-            recall_query_embedding, cat.working_memory['cat_said_metadata'], 10, 0.2
-    )
+        memories = vector_memory.recall_memories_from_embedding(
+                recall_query_embedding, cat.working_memory['cat_said_metadata'], 10, 0.2
+        )
 
-    for memory in memories:
-        cat.working_memory["declarative_memories"].append(memory)
-
+        for memory in memories:
+            cat.working_memory["declarative_memories"].insert(0, memory)
